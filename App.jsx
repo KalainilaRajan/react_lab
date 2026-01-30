@@ -1,54 +1,24 @@
-import { useState } from "react";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-function App(){
-  const[tasks,setTask]=useState([])   // store the task in array 
-  const[text,setText]=useState("")
+function App() {
+  const [color, setColor] = useState("white")
 
-
-  const addTask =()=>{
-    setTask([...tasks,{name:text,completed:false}])
-    setText("")
-
-  }
-
-  const deleteTask=(index)=>{
-    setTask(tasks.filter((_,i)=> i !== index))
-
-  }
-
-
-
-
-
-
-  return(
-
+  return (
     <>
-    <h1>To Do List</h1>
-    <input 
-    value={text} 
-    onChange={(e)=>setText(e.target.value)}
-    placeholder="Enter your task"
-    />
-    
-    <button onClick={addTask}>Add</button>
+     <div>
+      <h1>Color-Picker</h1>
+      <button onClick={()=>setColor("red")}>Red</button>
+      <button onClick={()=>setColor("green")}>Green</button>
+      <button onClick={()=>setColor("blue")}>Blue</button>
 
-    <ul>
-      {tasks.map((task,index)=>(
-        <li key={index}>
-          <input type="checkbox" checked={tasks.completed}/>
-          <span>{task.name}</span>
-          <button onClick={()=>deleteTask(index)}>delete</button>
-        </li>
-
-      ))}
-    </ul>
-    
-    
+      <div className='bgchange'style={{backgroundColor : color}}></div>
+     </div>
+       
     </>
   )
 }
-
-
 
 export default App
